@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Reaction Timer</title>
+	<style type="text/css">
+		#patt{
+			width: 200px;
+			height: 200px;
+			display: none;
+			position: relative;
+
+		}
+		body{
+			font-family: sans-serif;
+		}
+		#bol{
+				font-weight: bold;
+		}
+</style>
+	
+</head>
+<body>
+	<center><h1>Test Your Reactions!</h1>
+	<p>Click on the box/circle as quickle as you can!</p>
+	<p id="bol">Time Taken: <span id="timetaken"></span></p>
+	<p>Best Time: <span id="best"></span></p></center>
+	<div id="patt"></div>
+
+	<script type="text/javascript">
+
+
+
+
+		var start=new Date().getTime();
+		function getRandomColor() {
+ 				 var letters = '0123456789ABCDEF';
+ 				 var color = '#';
+ 				 for (var i = 0; i < 6; i++) {
+    				color += letters[Math.floor(Math.random() * 16)];
+  					}
+ 					 return color;
+					}
+		function app(){
+			var pos = Math.random() *  400;
+			var size=(Math.random() * 200)+100;
+			document.getElementById("patt").style.backgroundColor=getRandomColor();
+			if(Math.random()>0.50)
+				document.getElementById("patt").style.borderRadius="50%";
+			else
+			document.getElementById("patt").style.borderRadius="0%";
+				
+			document.getElementById("patt").style.width=size+"px";
+			document.getElementById("patt").style.height=size+"px";
+			document.getElementById("patt").style.left=pos+"px";
+			document.getElementById("patt").style.top = pos + "px";
+			document.getElementById("patt").style.display="block";
+			start=new Date().getTime();
+
+		}
+		setTimeout(app,Math.random()*1500);
+		var max=Number.MAX_SAFE_INTEGER;
+		document.getElementById("patt").onclick=function(){
+			document.getElementById("patt").style.display="none";
+			var end=new Date().getTime();
+			var tt= (end-start)/1000;
+
+			if(max>tt)
+			{
+				max=tt;
+				document.getElementById("best").innerHTML=tt+"s";
+			}
+			else
+				document.getElementById("best").innerHTML=max+"s";
+
+			document.getElementById("timetaken").innerHTML=tt+"s";
+			setTimeout(app,Math.random()*1500);
+			
+
+
+		}
+
+
+
+
+	</script>	
+
+
+
+		</body>
+</html>
