@@ -4,7 +4,7 @@
 	<title>Reaction Timer</title>
 	<style type="text/css">
 		#patt{
-			width: 200px;
+			width: 150px;
 			height: 200px;
 			display: none;
 			position: relative;
@@ -33,7 +33,7 @@
 
 		var start=new Date().getTime();
 		function getRandomColor() {
- 				 var letters = '0123456789ABCDEF';
+ 				 var letters = '0123456789';
  				 var color = '#';
  				 for (var i = 0; i < 6; i++) {
     				color += letters[Math.floor(Math.random() * 16)];
@@ -57,7 +57,7 @@
 			start=new Date().getTime();
 
 		}
-		setTimeout(app,Math.random()*1500);
+		setTimeout(app,Math.random()*2500);
 		var max=Number.MAX_SAFE_INTEGER;
 		document.getElementById("patt").onclick=function(){
 			document.getElementById("patt").style.display="none";
@@ -73,7 +73,7 @@
 				document.getElementById("best").innerHTML=max+"s";
 
 			document.getElementById("timetaken").innerHTML=tt+"s";
-			setTimeout(app,Math.random()*1500);
+			setTimeout(app,Math.random()*2500);
 			
 
 
